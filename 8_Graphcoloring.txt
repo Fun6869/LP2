@@ -1,0 +1,44 @@
+# Define the graph using an adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'C', 'D'],
+    'C': ['A', 'B', 'D'],
+    'D': ['B', 'C']
+}
+
+# Define available colors
+colors = ['Red', 'Green', 'Blue',]
+
+# Store the final assignment of colors to nodes
+color_assignment = {}
+
+# Check if the color can be assigned to the node
+def is_valid(node, color):
+    for neighbor in graph[node]:
+        if neighbor in color_assignment and color_assignment[neighbor] == color:
+            return False
+    return True
+
+# Backtracking function
+def assign_colors(node_list, index=0):
+    if index == len(node_list):
+        return True  # All nodes colored successfully
+
+    node = node_list[index]
+    for color in colors:
+        if is_valid(node, color):
+            color_assignment[node] = color
+            if assign_colors(node_list, index + 1):
+                return True
+            del color_assignment[node]  # Backtrack
+
+    return False  # No valid color found
+
+# Start the coloring process
+nodes = list(graph.keys())
+if assign_colors(nodes):
+    print(" Graph coloring successful! Result:")
+    for node in nodes:
+        print(f"{node} → {color_assignment[node]}")
+else:
+    print(" No valid coloring possible with the given colors.")

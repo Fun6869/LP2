@@ -1,0 +1,78 @@
+run in execute anynomous window---> class_name.function_name(); 
+-----------------------------------------------
+//multiple of 5 and 10
+
+public class multileOf5 {
+    public static void mul(){
+        for (integer i=1;i<=10;i++){
+            Integer result = i*5;
+        	system.debug('5 *' + i +'=' + result);
+        }
+    }
+}
+
+--------------------------------------------------
+
+//addition
+
+public class calculator {
+    public static void Add(){
+        Integer a = 3;
+        Integer b = 6;
+        System.debug('Addition of a and b is :'+ (a+b));
+    }
+}
+
+----------------------------------------------------\
+//subtact
+
+public class calculator {
+    public static void sub(){
+        Integer a = 3;
+        Integer b = 6;
+        System.debug('Subtraction of a and b is :'+ (a-b));
+    }
+}
+
+----------------------------------------------------
+//multiply
+
+public class calculator {
+    public static void Mul(){
+        Integer a = 3;
+        Integer b = 6;
+        System.debug('Multiplication of a and b is :' + (a*b));
+    }
+}
+
+-----------------------------------------------------
+//divide
+public class calculator {
+    public static void div(){
+        Integer a = 3;
+        Integer b = 6;
+        System.debug('division of a and b is :'+ (a/b));
+    }
+}
+----------------------------------------------------
+// all arithematic
+
+public class calculator {
+    public static void calc(){
+        Integer a = 3;
+        Integer b = 6;
+        System.debug('Addition of a and b is :'+ (a+b));
+	System.debug('Subtraction of a and b is :'+ (a-b));
+	System.debug('Multiplication of a and b is :'+ (a*b));
+	System.debug('Division of a and b is :'+ (a/b));
+
+    }
+}
+
+-----------------------------------------------------
+//hello msg
+
+public class hello{
+	public static void welcome(){
+		system.debug('Welcome to Apex Programming Language of sale force Platform.')
+	}

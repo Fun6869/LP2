@@ -1,0 +1,36 @@
+def solve_n_queens(n):
+    def is_safe(row, col):
+        return not cols[col] and not diag1[row - col] and not diag2[row + col]
+
+    def place_queen(row):
+        if row == n:
+            solution = []
+            for r in range(n):
+                line = ['.'] * n
+                line[queen_positions[r]] = 'Q'
+                solution.append("".join(line))
+            solutions.append(solution)
+            return
+
+        for col in range(n):
+            if is_safe(row, col):
+                cols[col] = diag1[row - col] = diag2[row + col] = True
+                queen_positions[row] = col
+                place_queen(row + 1)
+                cols[col] = diag1[row - col] = diag2[row + col] = False
+
+    cols = [False] * n
+    diag1 = {i: False for i in range(-n, n)}
+    diag2 = {i: False for i in range(2 * n)}
+    queen_positions = [0] * n
+    solutions = []
+    place_queen(0)
+    return solutions
+
+n = 4
+solutions = solve_n_queens(n)
+print(f"Total solutions for {n}-Queens: {len(solutions)}")
+for sol in solutions:
+    for row in sol:
+        print(row)
+    print()

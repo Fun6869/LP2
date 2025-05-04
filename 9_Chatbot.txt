@@ -1,0 +1,28 @@
+def chatbot():
+    print("Welcome to ShopHelp Assistant!")
+    print("How can I assist you today? (Type 'bye' to exit)")
+
+    while True:
+        user_input = input("You: ").lower()
+
+        if "order" in user_input and "status" in user_input:
+            print("Bot: You can check your order status by logging into your account and visiting 'My Orders'.")
+        
+        elif "return" in user_input:
+            print("Bot: We offer a 7-day return policy for most items. Visit your order history to initiate a return.")
+        
+        elif "payment" in user_input or "pay" in user_input:
+            print("Bot: We accept credit/debit cards, UPI, net banking, and cash on delivery.")
+        
+        elif "shipping" in user_input:
+            print("Bot: Standard shipping takes 3–5 business days. Express delivery is also available.")
+        
+        elif "bye" in user_input or "exit" in user_input:
+            print("Bot: Thank you for contacting ShopHelp. Have a great day!")
+            break
+        
+        else:
+            print("Bot: I'm sorry, I didn't understand that. You can ask about order status, returns, or payments.")
+
+# Run the chatbot
+chatbot()

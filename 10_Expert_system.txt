@@ -1,0 +1,52 @@
+def get_yes_no_input(prompt):
+    while True:
+        answer = input(prompt + " (yes/no): ").lower()
+        if answer in ['yes', 'no']:
+            return answer
+        else:
+            print("Please enter 'yes' or 'no'.")
+
+def diagnose():
+    print("🏥 Welcome to HealthExpert – Hospital Diagnostic Assistant")
+    print("Please answer the following questions about your symptoms:")
+
+    fever = get_yes_no_input("Do you have a fever?")
+    cough = get_yes_no_input("Do you have a cough?")
+    sore_throat = get_yes_no_input("Do you have a sore throat?")
+    headache = get_yes_no_input("Do you have a headache?")
+    fatigue = get_yes_no_input("Are you feeling fatigued?")
+    rash = get_yes_no_input("Do you have any skin rash?")
+    nausea = get_yes_no_input("Do you feel nauseous?")
+    diarrhea = get_yes_no_input("Do you have diarrhea?")
+    breathless = get_yes_no_input("Are you feeling shortness of breath?")
+
+    print("\n🩺 Diagnosis:")
+
+    # Simple Rule-based Inference
+    if fever == 'yes' and cough == 'yes' and sore_throat == 'yes' and breathless == 'yes':
+        print("- Possible condition: COVID-19")
+        print("- Advice: Isolate yourself, wear a mask, and contact your local health authority.")
+    
+    elif fever == 'yes' and cough == 'yes' and sore_throat == 'yes':
+        print("- Possible condition: Flu")
+        print("- Advice: Rest, stay hydrated, and consider seeing a doctor.")
+    
+    elif fever == 'yes' and rash == 'yes' and headache == 'yes':
+        print("- Possible condition: Dengue")
+        print("- Advice: Get a blood test, avoid painkillers like ibuprofen, and consult a physician.")
+    
+    elif nausea == 'yes' and diarrhea == 'yes':
+        print("- Possible condition: Food Poisoning")
+        print("- Advice: Drink plenty of fluids, eat light meals, and consult a doctor if severe.")
+
+    elif headache == 'yes' and fatigue == 'yes':
+        print("- Possible condition: Migraine or general fatigue")
+        print("- Advice: Avoid screens, rest, and monitor symptoms.")
+
+    else:
+        print("- Unable to determine condition. Please consult a doctor for further diagnosis.")
+
+    print("\n💡 Note: This is a basic expert system and not a substitute for professional medical advice.")
+
+# Run the expert system
+diagnose()

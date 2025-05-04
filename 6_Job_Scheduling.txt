@@ -1,0 +1,43 @@
+# Job class
+class Job:
+    def __init__(self, job_id, deadline, profit):
+        self.id = job_id
+        self.deadline = deadline
+        self.profit = profit
+
+def job_scheduling(jobs):
+    # Step 1: Sort jobs in descending order of profit
+    jobs.sort(key=lambda x: x.profit, reverse=True)
+
+    n = len(jobs)
+    max_deadline = max(job.deadline for job in jobs)
+    result = [None] * max_deadline  # To store job sequence
+    slot = [False] * max_deadline   # To track free time slots
+
+    total_profit = 0
+    job_sequence = []
+
+    # Step 2: Assign jobs to slots
+    for job in jobs:
+        # Try to fit the job into the latest possible free slot
+        for j in range(min(max_deadline, job.deadline) - 1, -1, -1):
+            if not slot[j]:
+                slot[j] = True
+                result[j] = job.id
+                total_profit += job.profit
+                job_sequence.append(job.id)
+                break
+
+    print("Scheduled Jobs:", job_sequence)
+    print("Total Profit:", total_profit)
+
+# Example usage
+jobs = [
+    Job('J1', 2, 100),
+    Job('J2', 1, 19),
+    Job('J3', 2, 27),
+    Job('J4', 1, 25),
+    Job('J5', 3, 15),
+]
+
+job_scheduling(jobs)
